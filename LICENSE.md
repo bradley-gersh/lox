@@ -1,16 +1,5 @@
 # The MIT License (MIT)
 
-## Preface
-
-This repository represents my time working through Bob Nystrom's book
-[Crafting Interpreters](https://craftinginterpreters.com/). All of it is
-essentially verbatim from that text and does not represent my own (BG's) work.
-The original code is [MIT-licensed](https://github.com/munificent/craftinginterpreters/blob/master/LICENSE),
-which I am reproducing here. Should I introduce any modifications, they are
-under the same MIT license.
-
-## License
-
 Copyright (c) 2015 Robert Nystrom
 Any modifications copyright (c) 2022 Bradley Gersh
 
