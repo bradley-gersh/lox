@@ -12,11 +12,11 @@ public class Lox {
   public static void main(String[] args) throws IOException {
     if (args.length > 1) {
       System.out.println("Usage: jlox [script]");
-      System.exit(64); // EX_USAGE, command used incorrectly
+      System.exit(64); // EX_USAGE: command used incorrectly
     } else if (args.length == 1) {
-      runFile(args[0]);
+      // runFile(args[0]);
     } else {
-      runPrompt();
+      // runPrompt();
     }
   }
 }
