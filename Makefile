@@ -1,7 +1,6 @@
-jlox: jlox/*.java
-	java jlox/*
+java:
 	javac jlox/*.java
-	jar cf jlox.jar jlox/*.class
+	jar cfm jlox.jar jlox/manifest.mf jlox/*.class
 	$(RM) jlox/*.class
 
 clean:
