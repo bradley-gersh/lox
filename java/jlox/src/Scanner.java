@@ -1,11 +1,11 @@
-package jlox;
+package jlox.src;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static jlox.TokenType.*;
+import static jlox.src.TokenType.*;
 
 class Scanner {
   private final String source;
@@ -99,6 +99,10 @@ class Scanner {
         if (match('/')) {
           while (peek() != '\n' && !isAtEnd())
             advance();
+        } else if (match('*')) {
+          while (peek() != '*' && peekNext() != '/' && !isAtEnd()) {
+            advance();
+          }
         } else {
           addToken(SLASH);
         }
