@@ -1,16 +1,22 @@
-JROOT = java
-JLOX = $(JROOT)/jlox/src
-JTOOL = $(JROOT)/jlox/tool
+BUILD = build
+
+JFLAGS = -Werror
+JSOURCEROOT = java
+JLOX = $(JSOURCEROOT)/jlox/src
+JTOOL = $(JSOURCEROOT)/jlox/tool
+
+JBUILDROOT = $(BUILD)/$(JROOT)
 
 generate-ast:
-	@javac $(JTOOL)/GenerateAst.java
-	@java -cp $(JROOT) jlox.tool.GenerateAst $(JLOX)
-	@$(RM) $(JTOOL)/GenerateAst.class
+	@mkdir -p $(BUILD)/$(JTOOL)
+	javac $(JFLAGS) -d $(JBUILDROOT) $(JTOOL)/GenerateAst.java
+	@java -cp $(JBUILDROOT) jlox.tool.GenerateAst $(JLOX)
 
-java:
-	javac $(JLOX)/*.java
-	jar cfm jlox.jar $(JLOX)/manifest.mf $(JLOX)/*.class
-	$(RM) $(JLOX)/*.class
+java: $(JLOX)
+	@$(MAKE) generate-ast
+	@mkdir -p $(BUILD)/$(JLOX)
+	javac $(JFLAGS) -d $(JBUILDROOT) $(JLOX)/*.java
+	@jar cmf $(JLOX)/manifest.mf jlox.jar -C $(JBUILDROOT) jlox/src/
 
 clean:
-	$(RM) $(JLOX)/*.class
+	@$(RM) -r $(BUILD)
